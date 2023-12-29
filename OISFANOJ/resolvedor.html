@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROBLEMA RESUELTO</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">PROBLEMA RESUELTO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="inicioSesion.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="py-5">
+        <div class="container text-center">
+            <br>
+            <br>
+            <h2 class="col-12 text-center">Ingrese su expresión</h2>
+            <br>
+            <br>
+            <!-- Añadido el evento onclick para limpiar el contenido al hacer clic -->
+            <div>
+                <input class="col-5 text-center" type="text" id="expresion" placeholder="Ingrese la expresión" readonly>
+            </div>
+            <!-- <textarea class="col-5 text-center" id="texto" name="texto" oninput="validarFormato(this.value)"
+                onclick="limpiarContenido(this)" rows="4" cols="50">Ingrese la expresión</textarea>-->
+
+        </div>
+        <br>
+
+    </section>
+
+    <div class="container text-center">
+        <button onclick="agregarCaracter('1')">1</button>
+        <button onclick="agregarCaracter('2')">2</button>
+        <button onclick="agregarCaracter('3')">3</button>
+        <button onclick="agregarCaracter('+')">+</button>
+    </div>
+    <div class="container text-center">
+        <button onclick="agregarCaracter('4')">4</button>
+        <button onclick="agregarCaracter('5')">5</button>
+        <button onclick="agregarCaracter('6')">6</button>
+        <button onclick="agregarCaracter('-')">-</button>
+    </div>
+    <div class="container text-center">
+        <button onclick="agregarCaracter('7')">7</button>
+        <button onclick="agregarCaracter('8')">8</button>
+        <button onclick="agregarCaracter('9')">9</button>
+        <button onclick="agregarCaracter('*')">*</button>
+    </div>
+    <div class="container text-center">
+        <button onclick="agregarCaracter('0')">0</button>
+        <button onclick="agregarCaracter('.')">.</button>
+        <button onclick="borrar()">C</button>
+        <br>
+        <br>
+        <div class="container text-center">
+            <button type="button" onclick="calcular()" class="btn btn-success btn-lg">Evaluar</button>
+        </div>
+        <!--
+        <button onclick="calcular()">=</button>-->
+    </div>
+
+    <script>
+        function agregarCaracter(caracter) {
+            document.getElementById('expresion').value += caracter;
+        }
+
+        function borrar() {
+            document.getElementById('expresion').value = "";
+        }
+
+        function calcular() {
+            try {
+                var resultado = eval(document.getElementById('expresion').value);
+                document.getElementById('expresion').value = resultado;
+            } catch (error) {
+                alert("Expresión no válida");
+            }
+        }
+    </script>
+    <div>
+        <h3>Pasos de Evaluación:</h3>
+        <ul id="pasosList"></ul>
+    </div>
+
+    <script>
+        // Supongamos que ya tienes un arreglo de pasos de evaluación
+        const pasosEvaluacion = ['( 5 * 8 ) = 40', '( 2 + 3 ) = 5'];
+
+        // Función para mostrar los pasos en la interfaz
+        function mostrarPasos() {
+            const pasosList = document.getElementById('pasosList');
+
+            // Limpiar la lista antes de agregar nuevos pasos
+            pasosList.innerHTML = '';
+
+            // Agregar cada paso como un elemento de lista
+            pasosEvaluacion.forEach(paso => {
+                const listItem = document.createElement('li');
+                listItem.textContent = paso;
+                pasosList.appendChild(listItem);
+            });
+        }
+
+        // Llamada a la función para mostrar los pasos (puedes hacer esto después de recibir los resultados)
+        mostrarPasos();
+    </script>
+
+</body>
+
+</html>
