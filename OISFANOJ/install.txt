@@ -1,0 +1,13 @@
+El sitio web consta de paginas estaticas, falta algo de integracion aun pero esta hasta donde terminamos.
+
+Ubuntu/Linux
+Primero debemos tener git instalado:
+sudo apt update
+sudo apt install git
+
+Habrir terminal y dirigirnos a una carpeta donde deseemos clonar el repositorio: Por ejemplo en el escritorio
+cd ~/Desktop                  
+git clone https://github.com/mauCZ/evaluador-expresiones.git
+cd evaluador-expresiones
+
+Abrir el documento index.html con el navegador preferido y listo.
